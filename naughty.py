@@ -1,3 +1,5 @@
+# not family-friendly words are put here (i started this project while in school)
+
 verbs = ['fuck', 'shit', 'masturbate', 'piss', 'cum']
 nouns = ['shit', 'piss', 'sex', 'bitch', 'dick', 'pussy', 'vagina', 'penis', 'dickhead', 'cocksucker', 'ass', 'asshole', 'asshat', 'cum', 'cock', 'cocaine', 'crack', 'meth', 'weed', 'marijuana', 'pervert', 'acid', 'ecstasy']
 adj = ['gay', 'lesbian', 'misogynitic', 'racist', 'high', 'stoned', 'fucked']
