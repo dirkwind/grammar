@@ -3,23 +3,35 @@
 vowels = ['a', 'e', 'i', 'o', 'u']
 grammar_exceptions = {
     #template: 'word' : {'plural' : '', 'past' : '', 'present' : ''},
-    'run' : {'plural' : 'runs', 'past' : 'ran', 'present' : 'running'},
-    'play' : {'plural' : 'plays', 'past' : 'played', 'present' : 'playing'},
-    'swim' : {'plural' : 'swims', 'past' : 'swam', 'present' : 'swimming'},
-    'pet' : {'plural' : 'pets', 'past' : 'pat', 'present' : 'petting'},
-    'ride' : {'plural' : 'rides', 'past' : 'rode', 'present' : 'riding'},
-    'drink' : {'plural' : 'drinks', 'past' : 'drank', 'present' : 'drinking'},
-    'fight' : {'plural' : 'fights', 'past' : 'fought', 'present' : 'fighting'},
-    'bite' : {'plural' : 'bites', 'past' : 'bit', 'present' : 'biting'},
-    'wear' : {'plural' : 'wears', 'past' : 'wore', 'present' : 'wearing'},
+    'run' : {'past' : 'ran'},
+    'swim' : {'past' : 'swam'},
+    'pet' : {'past' : 'pat'},
+    'ride' : {'past' : 'rode'},
+    'drink' : {'past' : 'drank'},
+    'fight' : {'past' : 'fought'},
+    'bite' : {'past' : 'bit'},
+    'wear' : {'past' : 'wore'},
+    'woman' : {'plural' : 'women'},
+    'man' : {'plural' : 'men'}
 }
+
+def in_exeptions(word, tense):
+    if word in grammar_exceptions.keys():
+        if tense in grammar_exceptions[word].keys():
+            return True
+        else:
+            return False
+    else:
+        return False
 
 def present(word):
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
     thrd_last_letter = word[len(word) - 3]
 
-    if last_letter == 'e' and scnd_last_letter != 'e':
+    if in_exeptions(word, 'present'):
+        return grammar_exceptions[word]['present']
+    elif last_letter == 'e' and scnd_last_letter != 'e':
         return word[:len(word) - 1] + 'ing'
     elif last_letter == scnd_last_letter:
         return word + 'ing'
@@ -37,17 +49,18 @@ def past(word):
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
-    if last_letter == 'e':
+    if in_exeptions(word, 'past'):
+        return grammar_exceptions[word]['past']
+    elif last_letter == 'e':
         return word + 'd'
     elif scnd_last_letter in vowels and word[len(word) - 3] in vowels:
         return word + 'ed'
     elif last_letter not in set(['e' 'i' 'o' 'u', 'y', 'a', 'k', 't', 'x', 'h', 'w', 'd', 'y']):
         return word + last_letter + 'ed'
     elif last_letter == 'y' and scnd_last_letter in vowels:
-        return 
+        return word + 'ed'
     elif last_letter == 'y':
         return word[:len(word) - 1] + 'ied'
-    
     else:
         return word + 'ed' 
     
@@ -56,7 +69,9 @@ def plural(word):
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
-    if last_letter == 'y' and scnd_last_letter not in vowels:
+    if in_exeptions(word, 'plural'):
+        return grammar_exceptions[word]['plural']
+    elif last_letter == 'y' and scnd_last_letter not in vowels:
         return word[:len(word) - 1] + 'ies'
     elif last_letter == 'h':
         return word + 'es'
@@ -86,3 +101,6 @@ def pronoun_possesive(pronoun):
         return pronoun + ' am'
     else:
         return pronoun + ' are'
+
+w = 'man'
+print(present(w), past(w), plural(w))
