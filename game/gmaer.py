@@ -21,7 +21,7 @@ lists = [verbs, nouns, adj, exclaim, loc, names]
 
 
 
-#---------------------------------------------Non-Gorf (functions)---------------------------------------------#
+#---------------------------------------------Non-Gorf---------------------------------------------#
 
 def word_count():
     total_words = 0
@@ -95,22 +95,29 @@ class Gorf(object):
     default_save_file = 'gorf_saves.txt'
     max_seed = 41
 
-    def __init__(self, seed, seed_word, save_file=default_save_file):
+    def __init__(self, seed, seed_word, save_file=default_save_file, silent=False):
         self.save_file = save_file
-        if seed < 0 or seed > self.max_seed:
+        self.seed_word = seed_word
+        self.silent = silent
+
+        if type(seed) != int:
+            raise TypeError(f'seed must be an integer (is currently {type(seed)})')
+        elif seed < 0 or seed > self.max_seed:
             self.seed = random.randint(0, self.max_seed)
         else:
             self.seed = seed
-        if seed_word == False:
-            print("\ngorf has been initialized with seed", str(self.seed) + ".")
-        elif seed_word != False:
-            print("\ngorf has been initialized with seed '" + str(seed_word) + "'.")
+
+        if not silent:
+            if seed_word == None:
+                print("\ngorf has been initialized with seed", str(self.seed) + ".")
+            else:
+                print("\ngorf has been initialized with seed '" + str(seed_word) + "'.")
 
     
     
     #---------------Sentences---------------#
 
-    def talk(self):
+    def get_sentence(self):
         if self.seed == 5:
             response = ("\nYou need to", random.choice(verbs), "on the", random.choice(nouns) + '.')
         elif self.seed == 6:
@@ -188,9 +195,9 @@ class Gorf(object):
         elif self.seed == 38:
             response = ("\nMy", random.choice(['mom', 'dad', 'mother', 'father']), 'always told me, "When you\'re all out of', random.choice(nouns) + ', just go and', random.choice(verbs), 'your', random.choice(nouns) + '."')
         elif self.seed == 39:
-            response = ('\n"' + plural(random.choice(nouns)).capitalize(), 'are the', plural(random.choice(nouns)), 'of', random.choice(adj), plural(random.choice(nouns)) + '." -', random.choice(['Barack Obama', 'Donald Trump', 'Abraham Lincoln', 'Bill Cosby', 'Hillary Clintin', 'Ronald Reagan', 'Winston Churchill', 'Beyonce', 'Lil Pump', '6ix 9ine', 'Drake', 'Kanye West', 'Brad Pitt', 'Ellen DeGeneres', 'Dwayne Johnson']) + '.')
+            response = (f"\n\"{plural(random.choice(nouns)).capitalize()} are the {plural(random.choice(nouns))} of {random.choice(adj)} {plural(random.choice(nouns))}.\" - {random.choice(['Barack Obama', 'Donald Trump', 'Abraham Lincoln', 'Bill Cosby', 'Hillary Clintin', 'Ronald Reagan', 'Winston Churchill', 'Beyonce', 'Lil Pump', '6ix 9ine', 'Drake', 'Kanye West', 'Brad Pitt', 'Ellen DeGeneres', 'Dwayne Johnson'])}.")
         elif self.seed == 40:
-            response = ("\nIf", add_a(random.choice(nouns)), plural(random.choice(verbs)) + ", it is", random.choice(adj), 'and', random.choice(adj) + '.')
+            response = (f"\nIf {add_a(random.choice(nouns))} {plural(random.choice(verbs))}, it is {random.choice(adj)} and {random.choice(adj)}.")
         elif self.seed == 41: # f strings will be used from now on (older sentences might be converted later)
             response = (f"\nThe {random.choice(adj)} story is that {pronoun_possesive(random.choice(pronouns))} completely and utterly {random.choice(adj)}.")
         else:
@@ -203,10 +210,13 @@ class Gorf(object):
                 self.sentence += section + ' '
         else:
             self.sentence = response
-        
-        print(self.sentence)
 
-        self.seed = random.randint(0, self.max_seed)  
+        self.seed = random.randint(0, self.max_seed)
+
+        return self.sentence
+
+    def talk(self):
+        print(self.get_sentence())
     
     def save_sentence(self):
         with open(self.save_file, 'a') as sf:
@@ -220,6 +230,9 @@ class Gorf(object):
     def erase_saved_data(self):
         with open(self.save_file, 'w') as sf:
             sf.write('')
+    
+    def __repr__(self):
+        return f'Gorf({self.seed}, {self.seed_word}, {self.save_file}, {self.silent})'
 
 #---------------------------------------------Execution---------------------------------------------#
     
@@ -300,4 +313,5 @@ def main(): # premade game using gorf and other functions
             using = False
 
 if __name__ == '__main__':
+    # premade game will only run if gmaer.py is ran
     main()
