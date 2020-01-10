@@ -1,9 +1,10 @@
 import math, random, sys, time, string
+from grammar_functions import *
 
 #---------------------------------------------Lists and Dictionaries---------------------------------------------#
 
 
-vowels = ['a', 'e', 'i', 'o', 'u']
+
 pronouns = ['he', 'she', 'I', 'you', 'we', 'y\'all', 'you guys']
 verbs = ['cough', 'run', 'walk', 'defecate', 'flap', 'urinate', 'expunge', 'masticate', 'perambulate', 'touch', 'play', 'suck', 'pummel', 'open', 'spoon', 'dance', 'gorge', 'lunge', 'attack', 'jump', 'game end', 'game', 'yeet', 'clap', 'talk', 'stretch', 'work', 'swim', 'throw', 'insert', 'penetrate', 'rub', 'flex', 'slap', 'pet', 'milk', 'lick', 'call', 'prod', 'dwell', 'leap', 'strip', 'love', 'hate', 'despise', 'eat', 'fall', 'save', 'tend', 'raise', 'break', 'end', 'grow', 'obtain', 'wear', 'fight', 'fill', 'examine', 'replace', 'drink', 'hang', 'finish', 'escape', 'rid', 'adopt', 'pee', 'compact', 'ride', 'bite', 'burn', 'gibe', 'fertilize', 'vaporize', 'divorce', 'witness', 'choke', 'slam', 'ram', 'blow', 'drink', 'slurp', 'sip', 'forget', 'hurt', 'bend', 'mess', 'pay', 'see']
 nouns = ['car', 'house', 'cat', 'skin', 'frog', 'desk', 'mom', 'tree', 'banana', 'orange', 'brother', 'sister', 'piano', 'fork', 'spoon', 'urinal', 'gas station bathroom', 'door', 'sink', 'fridge', 'hole', 'president', 'lap', 'sausage', 'boomer', '(nerf) gun', 'man', 'boy', 'baby', 'infant', 'woman', 'girl', 'toddler', 'child', 'grandpa', 'grandma', 'train', 'stomach', 'intestine', 'brain', 'foot', 'video game', 'gamer', 'phlegm', 'bush', 'toe', 'rump', 'teacher', 'pet', 'cow', 'pig', 'swine', 'milk', 'water', 'wheelchair', 'Fortnite', 'grum', 'grime', 'troglodyte', 'food', 'flask', 'urine', 'trash', 'leg', 'arm', 'rod', 'wood', 'morning', 'egg', 'seed', 'yolk', 'dwarf', 'chicken', 'clam', 'oyster', 'laser beam', 'buffoon', 'inquisition', 'emo', 'witness', 'hamster', 'national', 'jingo', 'mess']
@@ -14,18 +15,7 @@ names = ['Betty', 'Kromas', 'Larson', 'Johannes', 'Dogman', 'Krom', 'Mikey', 'Bo
 
 lists = [verbs, nouns, adj, exclaim, loc, names]
 
-exceptions = { # used for grammar
-    #'word' : {'plural' : '', 'past' : '', 'present' : ''},
-    'run' : {'plural' : 'runs', 'past' : 'ran', 'present' : 'running'},
-    'play' : {'plural' : 'plays', 'past' : 'played', 'present' : 'playing'},
-    'swim' : {'plural' : 'swims', 'past' : 'swam', 'present' : 'swimming'},
-    'pet' : {'plural' : 'pets', 'past' : 'pat', 'present' : 'petting'},
-    'ride' : {'plural' : 'rides', 'past' : 'rode', 'present' : 'riding'},
-    'drink' : {'plural' : 'drinks', 'past' : 'drank', 'present' : 'drinking'},
-    'fight' : {'plural' : 'fights', 'past' : 'fought', 'present' : 'fighting'},
-    'bite' : {'plural' : 'bites', 'past' : 'bit', 'present' : 'biting'},
-    'wear' : {'plural' : 'wears', 'past' : 'wore', 'present' : 'wearing'},
-}
+
 
 keys = {
     0: '\'?IUû!wK░@ÚÏrþ¢9MÍ<ukZ:G¹Óà³á║ÈÁHïÎÔoËY┼J╠╬┴0i3²7X▓í└┤ªºv¶÷yð,µjça©* ø2▄êâ.úTpÂ’ÖØý█1ÆóÌ´╔╦[Õæb$Òä“·«åtÑã§ëßì6+;s╝g£B&Lé”▒═{EîmO°¿ü-¼¥┬èÊö5╚%Çh¾»¤q╗Þc½^×ôÐ4]"}=Ä¦(¯`▀│fD├ÛWÝS─zÀd╩Å¨Ã#ñNC┐QnÜù8/¦®ÙF­¸¡\ÉAR)¬õÿxV|_■~òP>e±l╣',
@@ -150,83 +140,6 @@ def uncrunch(word):
         result += alphabet[index]
         increment *= 2
     return result
-
-#---------------Grammar---------------#
-
-# look in Lists and Dictionary for the definition of exceptions
-
-def present(word):
-    last_letter = word[len(word) - 1]
-    scnd_last_letter = word[len(word) - 2]
-    thrd_last_letter = word[len(word) - 3]
-
-    if last_letter == 'e' and scnd_last_letter != 'e':
-        return word[:len(word) - 1] + 'ing'
-    elif last_letter == scnd_last_letter:
-        return word + 'ing'
-    elif thrd_last_letter == scnd_last_letter and last_letter not in vowels:
-        return word + 'ing'
-    elif thrd_last_letter in vowels and scnd_last_letter in vowels and last_letter not in vowels:
-        return word + 'ing'
-    elif scnd_last_letter in vowels and last_letter not in vowels and last_letter not in ['w', 'y']:
-        return word + last_letter + 'ing'
-    else:
-        return word + 'ing'
-    
-
-def past(word):
-    last_letter = word[len(word) - 1]
-    scnd_last_letter = word[len(word) - 2]
-
-    if last_letter == 'e':
-        return word + 'd'
-    elif scnd_last_letter in vowels and word[len(word) - 3] in vowels:
-        return word + 'ed'
-    elif last_letter not in set(['e' 'i' 'o' 'u', 'y', 'a', 'k', 't', 'x', 'h', 'w', 'd', 'y']):
-        return word + last_letter + 'ed'
-    elif last_letter == 'y' and scnd_last_letter in vowels:
-        return 
-    elif last_letter == 'y':
-        return word[:len(word) - 1] + 'ied'
-    
-    else:
-        return word + 'ed' 
-    
-
-def plural(word):
-    last_letter = word[len(word) - 1]
-    scnd_last_letter = word[len(word) - 2]
-
-    if last_letter == 'y' and scnd_last_letter not in vowels:
-        return word[:len(word) - 1] + 'ies'
-    elif last_letter == 'h':
-        return word + 'es'
-    else:
-        return word + 's'
-
-def nounify(word):
-    last_letter = word[len(word) - 1]
-
-    if last_letter == 'e':
-        return word + 'r'
-    elif last_letter != 'e' and word[len(word) - 2] not in vowels:
-        return word + 'er'
-    else:
-        return word + last_letter + 'er'
-
-def add_a(word):
-    if word[0] in vowels:
-        return 'an ' + str(word)
-    else:
-        return 'a ' + str(word)
-
-def pronoun_possesive(pronoun):
-    if pronoun in ['she', 'he']:
-        return pronoun + ' is'
-    elif pronoun == 'I':
-        return pronoun + ' am'
-    else:
-        return pronoun + ' are'
 
 #---------------------------------------------Gorf---------------------------------------------#
 
