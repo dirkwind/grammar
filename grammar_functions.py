@@ -101,6 +101,3 @@ def pronoun_possesive(pronoun):
         return pronoun + ' am'
     else:
         return pronoun + ' are'
-
-w = 'man'
-print(present(w), past(w), plural(w))

@@ -118,90 +118,90 @@ class Gorf(object):
     #---------------Sentences---------------#
 
     def get_sentence(self):
-        if self.seed == 5:
-            response = ("\nYou need to", random.choice(verbs), "on the", random.choice(nouns) + '.')
-        elif self.seed == 6:
-            response = ("\nYou are", add_a(random.choice(nouns)) + '.')
-        elif self.seed == 0:
-            response = ("\nYou", random.choice(verbs), 'and', random.choice(verbs), "with the", random.choice(nouns) + ".")
+        if self.seed == 0:
+            response = (f"\nYou {random.choice(verbs)} and {random.choice(verbs)} with the {random.choice(nouns)}.")
         elif self.seed == 1:
-            response = ("\n" + add_a(random.choice(adj)).capitalize(), random.choice(nouns), plural(random.choice(verbs)) + ' with', add_a(random.choice(nouns)) + ".")
+            response = (f"\n{add_a(random.choice(adj)).capitalize()} {random.choice(nouns)} {plural(random.choice(verbs))} with {add_a(random.choice(nouns))}.")
         elif self.seed == 2:
-            response = ("\n" + random.choice(verbs).capitalize() + '.')
+            response = (f"\n{random.choice(verbs).capitalize()}.")
         elif self.seed == 3:
-            response = ("\nYour", random.choice(nouns) + "'s", random.choice(adj), random.choice(nouns), "is absolutely", random.choice(adj) + ". I must", random.choice(verbs), "it.")
+            response = (f"\nYour {random.choice(nouns)}'s {random.choice(adj)} {random.choice(nouns)} is absolutely {random.choice(adj)}. I must {random.choice(verbs)} it.")
         elif self.seed == 4:
-            response = ('\n' + add_a(random.choice(nouns)).capitalize(), plural(random.choice(verbs)), "you!")
+            response = (f'\n{add_a(random.choice(nouns)).capitalize()} {plural(random.choice(verbs))} you!')
+        elif self.seed == 5:
+            response = (f'\nYou need to {random.choice(verbs)} on the {random.choice(nouns)}.')
+        elif self.seed == 6:
+            response = (f"\nYou are {add_a(random.choice(nouns))}.")
         elif self.seed == 7:
-            response = ('\nYour favorite noun is', random.choice(nouns) + '.')
+            response = (f'\nYour favorite noun is {random.choice(nouns)}.')
         elif self.seed == 8:
-            response = ('\nYou love it when', add_a(random.choice(adj)), random.choice(nouns), plural(random.choice(verbs)) + '.')
+            response = (f'\nYou love it when {add_a(random.choice(adj))} {random.choice(nouns)} {plural(random.choice(verbs))}.')
         elif self.seed == 9:
-            response = ('\n'+ random.choice(verbs).capitalize(), add_a(random.choice(nouns)), 'for me.')
+            response = (f'\n{random.choice(verbs).capitalize()} {add_a(random.choice(nouns))} for me.')
         elif self.seed == 11:
-            response = ('\nGiving', add_a(random.choice(nouns)), add_a(random.choice(adj)), random.choice(verbs), "causes you to", random.choice(verbs) + ".")
+            response = (f'\nGiving {add_a(random.choice(nouns))} {add_a(random.choice(adj))} {random.choice(verbs)} causes you to {random.choice(verbs)}.')
         elif self.seed == 12:
-            response = ('\nYou', random.choice(verbs), 'while', present(random.choice(verbs)), add_a(random.choice(adj)), random.choice(nouns) +'.')
+            response = (f'\nYou {random.choice(verbs)} while {present(random.choice(verbs))} {add_a(random.choice(adj))} {random.choice(nouns)}.')
         elif self.seed == 13:
-            response = ('\nYou love to', random.choice(verbs), 'in public.')
+            response = (f'\nYou love to {random.choice(verbs)} in public.')
         elif self.seed == 14:
-            response = ("\nYou have", add_a(random.choice(adj)), 'desire to', random.choice(verbs), 'on the', random.choice(nouns) + "'s", random.choice(nouns) + ".")
+            response = (f"\nYou have {add_a(random.choice(adj))} desire to {random.choice(verbs)} on the {random.choice(nouns)}'s {random.choice(nouns)}.")
         elif self.seed == 15:
-            response = ("\n"+ random.choice(exclaim).capitalize()+"! I can't believe that", add_a(random.choice(adj)), random.choice(nouns), past(random.choice(verbs)), "at", random.choice(loc) + "!")
+            response = (f"\n{random.choice(exclaim).capitalize()}! I can't believe that {add_a(random.choice(adj))} {random.choice(nouns)} {past(random.choice(verbs))} at {random.choice(loc)}!")
         elif self.seed == 16:
-            response = ("\n" + random.choice(exclaim).capitalize()+"! The", random.choice(adj), random.choice(nouns), past(random.choice(verbs)), "on the", random.choice(nouns), "again.")
+            response = (f"\n{random.choice(exclaim).capitalize()}! The {random.choice(adj)} {random.choice(nouns)} {past(random.choice(verbs))} on the {random.choice(nouns)} again.")
         elif self.seed == 17:
-            response = ("\nThis", random.choice(nouns), "is so", random.choice(adj) + ".")
+            response = (f"\nThis {random.choice(nouns)} is so {random.choice(adj)}.")
         elif self.seed == 18:
-            response = ("\n" + random.choice(exclaim).capitalize()+"! I found this", random.choice(nouns), "in", add_a(random.choice(adj)), random.choice(nouns) +'.')
+            response = (f"\n{random.choice(exclaim).capitalize()}! I found this {random.choice(nouns)} in {add_a(random.choice(adj))} {random.choice(nouns)}.")
         elif self.seed == 19:
-            response = ("\n" + add_a(random.choice(adj)).capitalize(), random.choice(nouns), 'is almost as bad as', add_a(random.choice(adj)), random.choice(nouns) + '.')
+            response = (f"\n{add_a(random.choice(adj)).capitalize()} {random.choice(nouns)} is almost as bad as {add_a(random.choice(adj))} {random.choice(nouns)}.")
         elif self.seed == 20:
-            response = ("\n" + random.choice(exclaim).capitalize() + "!", random.choice(names), 'just', past(random.choice(verbs)), "on the", random.choice(adj), random.choice(nouns) +'.')
+            response = (f"\n{random.choice(exclaim).capitalize()}! {random.choice(names)} just {past(random.choice(verbs))} on the {random.choice(adj)} {random.choice(nouns)}.")
         elif self.seed == 21:
-            response = ("\nMy", present(random.choice(verbs)), random.choice(nouns) + '!', random.choice(exclaim).capitalize() + "!" )
+            response = (f"\nMy {present(random.choice(verbs))} {random.choice(nouns)}! {random.choice(exclaim).capitalize()}!")
         elif self.seed == 22:
-            response = ("\n" + random.choice(exclaim).capitalize() + '!', random.choice(names), 'just', past(random.choice(verbs)) + '.')
+            response = (f"\n{random.choice(exclaim).capitalize()}! {random.choice(names)} just {past(random.choice(verbs))}.")
         elif self.seed == 23:
-            response = ("\nI wish", random.choice(names), 'would just', random.choice(verbs), 'on my', random.choice(nouns) + '.')
+            response = (f"\nI wish {random.choice(names)} would just {random.choice(verbs)} on my {random.choice(nouns)}.")
         elif self.seed == 24:
-            response = ('\n'+random.choice(exclaim).capitalize() + "! I really want to", random.choice(verbs), "on", random.choice(names)+"'s", random.choice(adj), random.choice(nouns)+'.')
+            response = (f'\n{random.choice(exclaim).capitalize()}! I really want to {random.choice(verbs)} on {random.choice(names)}\'s {random.choice(adj)} {random.choice(nouns)}.')
         elif self.seed == 25:
-            response = ('\nYou are so', random.choice(adj)+',', random.choice(adj)+', and', random.choice(adj)+". I must", random.choice(verbs), 'on you.')
+            response = (f'\nYou are so {random.choice(adj)}, {random.choice(adj)}, and {random.choice(adj)}. I must {random.choice(verbs)} on you.')
         elif self.seed == 26:
-            response = ("\n"+ random.choice(exclaim).capitalize() + ", the", random.choice(nouns)+"!")
+            response = (f"\n{random.choice(exclaim).capitalize()}, the {random.choice(nouns)}!")
         elif self.seed == 27:
-            response = ("\nThis", random.choice(nouns), "makes me really want to", random.choice(verbs), add_a(random.choice(nouns) + '.'))
+            response = (f"\nThis {random.choice(nouns)} makes me really want to {random.choice(verbs)} {add_a(random.choice(nouns))}.")
         elif self.seed == 28:
-            response = ("\n" + plural(random.choice(nouns)).capitalize(), "are", random.choice(adj) + '.')
+            response = (f"\n{plural(random.choice(nouns)).capitalize()} are {random.choice(adj)}.")
         elif self.seed == 29:
-            response = ("\nGuess what?", random.choice(verbs).capitalize(), "on my", random.choice([random.choice(nouns), plural(random.choice(nouns))]) + ".")
+            response = (f"\nGuess what? {random.choice(verbs).capitalize()} on my {random.choice([random.choice(nouns)])} {plural(random.choice(nouns))}.")
         elif self.seed == 30:
-            response = ("\nYou are", random.choice(adj) + '.')
+            response = (f"\nYou are {random.choice(adj)}.")
         elif self.seed == 31:
-            response = ("\nHave you heard about the", random.choice(nouns) + '?')
+            response = (f"\nHave you heard about the {random.choice(nouns)}?")
         elif self.seed == 32:
-            response = ("\n" + present(random.choice(verbs)).capitalize(), add_a(random.choice(adj)), random.choice(nouns), 'is considered', random.choice(nouns) + '-ist, you know.')
+            response = (f"\n{present(random.choice(verbs)).capitalize()} {add_a(random.choice(adj))} {random.choice(nouns)} is considered {random.choice(nouns)}-ist, you know.")
         elif self.seed == 33:
-            response = ("\nMany", plural(random.choice(nouns)), 'are self-proclaimed "' + random.choice(nouns) + '-' + plural(nounify(random.choice(verbs))) +'".')
+            response = (f"\nMany {plural(random.choice(nouns))} are seen as {random.choice(nouns)}-{plural(nounify(random.choice(verbs)))}, you know.")
         elif self.seed == 34:
-            response = ("\nYou are", add_a(present(random.choice(verbs))), random.choice(nouns) + '.')
+            response = (f"\nYou are {add_a(present(random.choice(verbs)))} {random.choice(nouns)}.")
         elif self.seed == 35:
-            response = ("\nI wish you and I could", random.choice(verbs), 'together.')
+            response = (f"\nI wish you and I could {random.choice(verbs)} together.")
         elif self.seed == 36:
-            response = ("\nI would", random.choice(verbs), 'to', random.choice(verbs), random.choice(names), 'being', past(random.choice(verbs)) + '.')
+            response = (f"\nI would {random.choice(verbs)} to {random.choice(verbs)} {random.choice(names)} being {past(random.choice(verbs))}.")
         elif self.seed == 37:
-            response = ("\nMy", random.choice(nouns), 'will be in your', random.choice(nouns), 'by the end of', random.choice(['the hour', 'this minute', 'today', 'the year', 'the decade', 'the century', 'this millennium']) + '.')
+            response = (f"\nMy {random.choice(nouns)} will be in your {random.choice(nouns)} by the end of {random.choice(['the hour', 'this minute', 'today', 'the year', 'the decade', 'the century', 'this millennium'])}.")
         elif self.seed == 38:
-            response = ("\nMy", random.choice(['mom', 'dad', 'mother', 'father']), 'always told me, "When you\'re all out of', random.choice(nouns) + ', just go and', random.choice(verbs), 'your', random.choice(nouns) + '."')
+            response = (f"\nMy {random.choice(['mom', 'dad', 'mother', 'father'])} always told me \"When you're all out of {random.choice(nouns)}, just go and {random.choice(verbs)} your {random.choice(nouns)}.\"")
         elif self.seed == 39:
             response = (f"\n\"{plural(random.choice(nouns)).capitalize()} are the {plural(random.choice(nouns))} of {random.choice(adj)} {plural(random.choice(nouns))}.\" - {random.choice(['Barack Obama', 'Donald Trump', 'Abraham Lincoln', 'Bill Cosby', 'Hillary Clintin', 'Ronald Reagan', 'Winston Churchill', 'Beyonce', 'Lil Pump', '6ix 9ine', 'Drake', 'Kanye West', 'Brad Pitt', 'Ellen DeGeneres', 'Dwayne Johnson'])}.")
         elif self.seed == 40:
             response = (f"\nIf {add_a(random.choice(nouns))} {plural(random.choice(verbs))}, it is {random.choice(adj)} and {random.choice(adj)}.")
-        elif self.seed == 41: # f strings will be used from now on (older sentences might be converted later)
+        elif self.seed == 41:
             response = (f"\nThe {random.choice(adj)} story is that {pronoun_possesive(random.choice(pronouns))} completely and utterly {random.choice(adj)}.")
         else:
-            response = ("\nYou have to", random.choice(verbs) + '.')
+            response = (f"\nYou have to {random.choice(verbs)}.")
         
         self.sentence = ''
 
