@@ -42,7 +42,7 @@ def hangman(word=None, guesses_to_lose=10):
     word = word.lower()
     playing = True
     spaced_word = ''
-    right_word = ''.join([letter + ' ' for letter in word]) # this is the correct word in the s p a c e d  o u t format
+    correct_word = ''.join([letter + ' ' for letter in word]) # this is the correct word in the s p a c e d  o u t format
     guesses = 0
     incorrect_letters = []
     correct_letters = []
@@ -61,7 +61,7 @@ def hangman(word=None, guesses_to_lose=10):
 
         print("\n" + spaced_word)
 
-        if spaced_word == right_word: 
+        if spaced_word == correct_word: 
             print("\nThat is the word! You win!")
             return None
         

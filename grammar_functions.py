@@ -55,11 +55,9 @@ def past(word):
         return word + 'd'
     elif scnd_last_letter in vowels and word[len(word) - 3] in vowels:
         return word + 'ed'
-    elif last_letter not in set(['e' 'i' 'o' 'u', 'y', 'a', 'k', 't', 'x', 'h', 'w', 'd', 'y']):
+    elif last_letter not in set(['e', 'i', 'o', 'u', 'y', 'a', 'k', 't', 'x', 'h', 'w', 'd', 'y']):
         return word + last_letter + 'ed'
-    elif last_letter == 'y' and scnd_last_letter in vowels:
-        return word + 'ed'
-    elif last_letter == 'y':
+    elif last_letter == 'y' and scnd_last_letter not in vowels:
         return word[:len(word) - 1] + 'ied'
     else:
         return word + 'ed' 
