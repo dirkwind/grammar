@@ -71,7 +71,7 @@ def plural(word):
         return grammar_exceptions[word]['plural']
     elif last_letter == 'y' and scnd_last_letter not in vowels:
         return word[:len(word) - 1] + 'ies'
-    elif last_letter == 'h':
+    elif last_letter in {'h', 's'}:
         return word + 'es'
     else:
         return word + 's'
