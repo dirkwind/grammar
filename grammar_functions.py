@@ -19,10 +19,7 @@ def in_exeptions(word, tense):
     if word in grammar_exceptions.keys():
         if tense in grammar_exceptions[word].keys():
             return True
-        else:
-            return False
-    else:
-        return False
+    return False
 
 def present(word):
     last_letter = word[len(word) - 1]
