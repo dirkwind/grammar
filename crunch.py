@@ -31,7 +31,7 @@ def crunch(phrase):
 
     try:
         # if key_num is at start of phrase
-        alphabet = keys.get(int(phrase[0]))
+        alphabet = keys[int(phrase[0])]
         phrase = phrase[1:] # removes key_num from phrase
     except:
         # if there is no key_num at start of phrase
@@ -53,7 +53,7 @@ def uncrunch(phrase):
 
     try:
         # if key_num is at start of phrase
-        alphabet = keys.get(int(phrase[0]))
+        alphabet = keys[int(phrase[0])]
         phrase = phrase[1:] # removes key_num from 
     except:
         # if there is no key_num at start of phrase
