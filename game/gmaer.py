@@ -313,5 +313,5 @@ def main(): # premade game using gorf and other functions
             using = False
 
 if __name__ == '__main__':
-    # premade game will only run if gmaer.py is ran
+    # premade game will only run if gmaer.py is ran directly
     main()
