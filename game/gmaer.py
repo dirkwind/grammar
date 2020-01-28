@@ -28,7 +28,7 @@ def word_count():
     for lis in lists: total_words += len(lis)
     print("\n\tVerbs:", len(verbs), "\n\tNouns:", len(nouns), '\n   Adjectives:', len(adj), '\nExclaimations:', len(loc), '\n\tNames:', len(names), '\n\n\tTotal:', total_words)
 
-def hangman(word=None, guesses_to_lose=10):
+def hangman(word=None, guesses_to_lose=7):
     if word == None:
         word = random.choice(random.choice(lists))
     if word in verbs: print("\nThe word is a verb.")
@@ -39,53 +39,56 @@ def hangman(word=None, guesses_to_lose=10):
     elif word in loc: print("\nThe word is a location.")
     else: print("\nWord is unknown!")
 
-    word = word.lower()
     playing = True
     spaced_word = ''
-    correct_word = ''.join([letter + ' ' for letter in word]) # this is the correct word in the s p a c e d  o u t format
+    correct_word = ' '.join([letter for letter in word]) # this is the correct word in the s p a c e d  o u t format
     guesses = 0
-    incorrect_letters = []
-    correct_letters = []
+    incorrect_letters = set()
+    correct_letters = set()
 
     while playing:
-        for letter in word:
+
+        for i, letter in enumerate(word.lower()):
             if letter == ' ': # if there is a space in a word
                 spaced_word += '  '
             elif letter in ["'", "-", "*"]: # if the current letter is a special charater
-                spaced_word += (letter + ' ')
-                correct_letters.append(letter)
+                spaced_word += (word[i] + ' ')
+                correct_letters.add(letter)
             elif letter in correct_letters: # if the letter has been correctly guessed
-                spaced_word += (letter + " ")
+                spaced_word += (word[i] + " ")
             else: # if the letter has not been guessed
                 spaced_word += "_ "
 
         print("\n" + spaced_word)
 
-        if spaced_word == correct_word: 
+        if spaced_word == correct_word + ' ': 
             print("\nThat is the word! You win!")
             return None
         
         spaced_word = ''
 
-        guess = str(input("\nGuess a letter or word: "))
+        guess = '..'
+        while len(guess) != 1:
+            guess = str(input("\nGuess a letter or word: ")).lower()
+            if guess == word:
+                print("\nThat is the word! Congratulations!")
+                return None
 
-        if guess == word:
-            print("\nThat is the word! Congratulations!")
-            return None
-        elif guess in word:
+        
+        if guess in word.lower():
             print("\nThat is a letter!")
-            correct_letters.append(guess)
-        else:
+            correct_letters.add(guess)
+        elif guess not in word.lower() and guess not in incorrect_letters:
             print("\nThat is not a letter in this word!")
-            incorrect_letters.append(guess)
+            incorrect_letters.add(guess)
             guesses += 1
         
         if guesses == guesses_to_lose:
             print("\nOut of guesses, you lose! The word was '" + word + "'!")
             return None
 
-        print("\nCorrectly Guessed Letters:", correct_letters)
-        print("\nCorrectly Guessed Letters:", incorrect_letters)
+        print("\nCorrectly Guessed Letters:", list(correct_letters))
+        print("Incorrectly Guessed Letters:", list(incorrect_letters))
         print("Wrong Guesses:", guesses, "/", guesses_to_lose)
 
 #---------------------------------------------Gorf---------------------------------------------#
