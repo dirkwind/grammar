@@ -267,17 +267,13 @@ def main(): # premade game using gorf and other functions
     affirmations = ['yes', 'y', 'yeah', 'ye', 'ys', 'i do', 'indeed', 'affirmative', 'ok'] # any string that is considered a confirmation/approval
 
     #  initializing gorf
-    start_word = None
-    try:
-        seed = int(input("Enter a seed: "))
-    except ValueError:
-        seed_word = ['egg', 'frog', 'oboe', 'tin', 'copper', 'lard', 'water', 'gamer', 'fortnite', 'time', 'log', 'wood', 'money', '$$$', 'dogma', 'cramp', 'bro', 'wheat', 'kyle']
-        s_word = random.choice(seed_word)
-        char_sum = 0
-        for letter in s_word:
-            char_sum += int(ord(letter))
-        char_sum = abs(char_sum - (len(s_word) * 69 + 200))
-        seed = char_sum
+    seed = str(input("Enter a seed: "))
+    if seed.isnumeric():
+        seed = int(seed)
+        start_word = None
+    else:
+        start_word = seed
+        seed = int((sum([ord(char) for char in seed]) * math.pi * 69 + 200)) % Gorf.max_seed
     gorf = Gorf(seed, start_word, 'gorf_favs.txt')
     gorf.talk()
 
