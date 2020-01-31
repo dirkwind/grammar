@@ -10,27 +10,49 @@ from crunch import *
 #---------------------------------------------Lists---------------------------------------------#
 
 pronouns = ['he', 'she', 'I', 'you', 'we', 'y\'all', 'you guys']
-verbs = ['cough', 'run', 'walk', 'defecate', 'flap', 'urinate', 'expunge', 'masticate', 'perambulate', 'touch', 'play', 'suck', 'pummel', 'open', 'spoon', 'dance', 'gorge', 'lunge', 'attack', 'jump', 'game end', 'game', 'yeet', 'clap', 'talk', 'stretch', 'work', 'swim', 'throw', 'insert', 'penetrate', 'rub', 'flex', 'slap', 'pet', 'milk', 'lick', 'call', 'prod', 'dwell', 'leap', 'strip', 'love', 'hate', 'despise', 'eat', 'fall', 'save', 'tend', 'raise', 'break', 'end', 'grow', 'obtain', 'wear', 'fight', 'fill', 'examine', 'replace', 'drink', 'hang', 'finish', 'escape', 'rid', 'adopt', 'pee', 'compact', 'ride', 'bite', 'burn', 'gibe', 'fertilize', 'vaporize', 'divorce', 'witness', 'choke', 'slam', 'ram', 'blow', 'drink', 'slurp', 'sip', 'forget', 'hurt', 'bend', 'mess', 'pay', 'see']
+verbs = ['cough', 'run', 'walk', 'defecate', 'flap', 'urinate', 'expunge', 'masticate', 'perambulate', 'touch', 'play', 'suck', 'pummel', 'open', 'spoon', 'dance', 'gorge', 'lunge', 'attack', 'jump', 'game end', 'game', 'yeet', 'clap', 'talk', 'stretch', 'work', 'swim', 'throw', 'insert', 'penetrate', 'rub', 'flex', 'slap', 'pet', 'milk', 'lick', 'call', 'prod', 'dwell', 'leap', 'strip', 'love', 'hate', 'despise', 'eat', 'fall', 'save', 'tend', 'raise', 'break', 'end', 'grow', 'obtain', 'wear', 'fight', 'fill', 'examine', 'replace', 'drink', 'hang', 'finish', 'escape', 'rid', 'adopt', 'pee', 'compact', 'ride', 'bite', 'burn', 'gibe', 'fertilize', 'vaporize', 'divorce', 'witness', 'choke', 'slam', 'ram', 'blow', 'drink', 'slurp', 'sip', 'forget', 'hurt', 'bend', 'mess', 'pay', 'see', 'thwart']
 nouns = ['car', 'house', 'cat', 'skin', 'frog', 'desk', 'mom', 'tree', 'banana', 'orange', 'brother', 'sister', 'piano', 'fork', 'spoon', 'urinal', 'gas station bathroom', 'door', 'sink', 'fridge', 'hole', 'president', 'lap', 'sausage', 'boomer', '(nerf) gun', 'man', 'boy', 'baby', 'infant', 'woman', 'girl', 'toddler', 'child', 'grandpa', 'grandma', 'train', 'stomach', 'intestine', 'brain', 'foot', 'video game', 'gamer', 'phlegm', 'bush', 'toe', 'rump', 'teacher', 'pet', 'cow', 'pig', 'swine', 'milk', 'water', 'wheelchair', 'Fortnite', 'grum', 'grime', 'troglodyte', 'food', 'flask', 'urine', 'trash', 'leg', 'arm', 'rod', 'wood', 'morning', 'egg', 'seed', 'yolk', 'dwarf', 'chicken', 'clam', 'oyster', 'laser beam', 'buffoon', 'inquisition', 'emo', 'witness', 'hamster', 'national', 'jingo', 'mess']
 adj = ['girthy', 'large', 'small', 'fat', 'tiny', 'ugly', 'hideous', 'unbelievable', 'lardful', 'bashful', 'dumb', 'sucky', 'presidential', 'erect', 'sad', 'colorful', 'stunning', 'lovely', 'open', 'obtuse', 'rowdy', 'jumbo', 'dapper', 'damp', 'wet', 'unpleasant', 'deplorable', 'barbarish', 'academic', 'unpleasant', 'broad', 'narrow', 'shy', 'high', 'damaged', 'dangerous', 'gluttonous', 'greedy', 'necrotic', 'relaxed', 'neurotic', 'paraplegic', 'epic', 'vile', 'putrid', 'abhorrent', 'adept', 'grimy', 'slimey', 'absurd', 'groggy', 'acidic', 'hefty', 'heinous', 'highfalautin', 'hot', 'spicey', 'exquisite', 'calamatous', 'loquacious', 'spastic', 'voracious', 'ravenous', 'zealous', 'saggy', 'hard', 'solid', 'slippery', 'catholic', 'edgy', 'derogatory', 'cretaceous', 'crustaceous', 'free']
 loc = ["Applebee's", "Arby's", "Hardee's", "McDonald's", "Aldi", "Walmart", "Five Guys'", "In-N-Out Burger", "Lowe's", "Dick's Sporting Goods", "Kohl's", "school", 'the library', 'my house', 'Hot Topic', 'Ruler Foods', 'Meijer']
 exclaim = ['zoinks', 'woah', 'wow', 'no way', 'what the heck', 'heck yeah', 'yay', 'hey', 'yo', 'uh oh', 'oh no', 'no', 'frick', 'epic', 'nice', 'alas', 'yum', 'um', 'ah', 'oh', 'aargh', 'ach', 'aha', 'boo-ya', 'oof', 'whew', 'yee-haw', 'golly', 'yikes', 'wowie', 'mmmm', 'ooh', 'yep', 'bah', 'ick', 'yuck', '*Coughs in Latin*']
 names = ['Betty', 'Kromas', 'Larson', 'Johannes', 'Dogman', 'Krom', 'Mikey', 'Bob', 'Bill', 'Oprah', 'Logan', 'Karl', 'Karlie', 'Charlie', 'Jack', 'Mark', 'Tom', 'Jerry', 'Elizabeth', 'Sofia', 'Karen', 'Julius', 'Jane', 'Cromwell', 'Krista', 'Jeroboam', 'Jasmyn', 'Merlyn', 'Kolleen', 'Ira', 'Arlen', 'Yoel', 'Penelope', 'Graham', 'Iarfhlaith', 'Austen', 'Reagan', 'Norris', 'Oliver', 'Eugenio', 'Boaz', 'Chavaqquq', 'Daniyyel', 'Paulus', 'Rolf', 'Philip', 'Eutimio', 'Uilleag', 'Sergei', 'Zinovy', 'Galina', 'Katyusha', 'Vasili'] 
 
-lists = [verbs, nouns, adj, exclaim, loc, names]
+word_lists = {'verbs': verbs, 'nouns': nouns, 'adj': adj, 'exclaim': exclaim, 'loc': loc, 'names': names}
 
 
 
 #---------------------------------------------Non-Gorf---------------------------------------------#
 
+def add_word(word, word_type):
+    '''Adds a word or words to a specified word list.
+
+    word can be str, set, list, or tuple.
+    word_type can be 'verbs', 'nouns', 'adj', 'exclaim', 'loc', or 'names'
+    '''
+    if type(word) in {list, tuple, set}:
+        for w in word:
+            w = w.lower()
+            if w not in word_lists[word_type]:
+                word_lists[word_type].append(w)
+    elif type(word) == str:
+        if word.lower() not in word_lists[word_type]:
+            word_lists[word_type].append(word.lower())
+    else:
+        raise TypeError(f"{type(word)} cannot be used by add_word")
+
+
+
 def word_count():
+    '''Prints the number of words in all word lists.'''
+    # this will likely change
     total_words = 0
-    for lis in lists: total_words += len(lis)
-    print("\n\tVerbs:", len(verbs), "\n\tNouns:", len(nouns), '\n   Adjectives:', len(adj), '\nExclaimations:', len(loc), '\n\tNames:', len(names), '\n\n\tTotal:', total_words)
+    for lis in word_lists.values(): total_words += len(lis)
+    print("\n\tVerbs:", len(verbs), "\n\tNouns:", len(nouns), '\n   Adjectives:', len(adj), '\nExclaimations:', len(exclaim), '\n    Locations:', len(loc), '\n\tNames:', len(names), '\n\n\tTotal:', total_words)
 
 def hangman(word=None, guesses_to_lose=7):
+    '''Just hangman.'''
     if word == None:
-        word = random.choice(random.choice(lists))
+        word = random.choice(random.choice(list(word_lists.values())))
     if word in verbs: print("\nThe word is a verb.")
     elif word in nouns: print("\nThe word is a noun.")
     elif word in adj: print("\nThe word is an adjective.")
@@ -196,7 +218,7 @@ class Gorf(object):
         elif self.seed == 37:
             response = (f"\nMy {random.choice(nouns)} will be in your {random.choice(nouns)} by the end of {random.choice(['the hour', 'this minute', 'today', 'the year', 'the decade', 'the century', 'this millennium'])}.")
         elif self.seed == 38:
-            response = (f"\nMy {random.choice(['mom', 'dad', 'mother', 'father'])} always told me \"When you're all out of {random.choice(nouns)}, just go and {random.choice(verbs)} your {random.choice(nouns)}.\"")
+            response = (f"\nMy {random.choice(['mom', 'dad', 'mother', 'father'])} always told me, \"When you're all out of {random.choice(nouns)}, just go and {random.choice(verbs)} your {random.choice(nouns)}.\"")
         elif self.seed == 39:
             response = (f"\n\"{plural(random.choice(nouns)).capitalize()} are the {plural(random.choice(nouns))} of {random.choice(adj)} {plural(random.choice(nouns))}.\" - {random.choice(['Barack Obama', 'Donald Trump', 'Abraham Lincoln', 'Bill Cosby', 'Hillary Clintin', 'Ronald Reagan', 'Winston Churchill', 'Beyonce', 'Lil Pump', '6ix 9ine', 'Drake', 'Kanye West', 'Brad Pitt', 'Ellen DeGeneres', 'Dwayne Johnson'])}.")
         elif self.seed == 40:
