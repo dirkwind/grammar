@@ -280,7 +280,7 @@ def main(): # premade game using gorf and other functions
     # using gorf
     using = True
     while using:
-        user_input = str(input("\nDo you accept? ")).lower()
+        user_input = str(input("\nDo you accept? ")).lower().strip()
         if user_input in affirmations:
             gorf.talk()
 
