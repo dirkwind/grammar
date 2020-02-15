@@ -1,4 +1,7 @@
 # functions used for grammar
+from copy import copy
+
+# NOTE: variables that are ALL CAPS are to preserve the original cases of the characters in a variable
 
 vowels = ['a', 'e', 'i', 'o', 'u']
 grammar_exceptions = {
@@ -16,8 +19,9 @@ grammar_exceptions = {
 
 def in_exeptions(word: str, tense: str):
     '''Checks if the provided word is in grammar_exceptions and if it contains an exception for the provided tense
-    tenses are: 'past', 'plural', and 'present'
+    \n\ntenses are: 'past', 'plural', and 'present'
     '''
+    word = word.lower()
     if word in grammar_exceptions:
         if tense in grammar_exceptions[word]:
             return True
@@ -25,8 +29,11 @@ def in_exeptions(word: str, tense: str):
 
 def present(word: str):
     '''Returns the word in present tense (e.g. run --> running)
-    word does not need to be a noun
+    \n\nword does not need to be a noun
     '''
+    WORD = copy(word)
+    word = word.lower()
+
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
     thrd_last_letter = word[len(word) - 3]
@@ -44,78 +51,100 @@ def present(word: str):
     elif thrd_last_letter in vowels and scnd_last_letter in vowels and last_letter not in vowels:
         pass
     elif scnd_last_letter in vowels and last_letter not in vowels and last_letter not in ['w', 'y']:
-        return word + last_letter + 'ing'
-    return word + 'ing'
+        return WORD + last_letter + 'ing'
+    return WORD + 'ing'
     
 
 def past(word: str):
     '''Returns the past tense of a word (e.g. run --> ran)
-    word does not need to be a verb
+    \n\nword does not need to be a verb
     '''
+    WORD = copy(word)
+    word = word.lower()
+
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
     if in_exeptions(word, 'past'):
         return grammar_exceptions[word]['past']
     elif last_letter == 'e':
-        return word + 'd'
+        return WORD + 'd'
     elif scnd_last_letter in vowels and word[len(word) - 3] in vowels:
-        return word + 'ed'
+        return WORD + 'ed'
     elif scnd_last_letter == 'e' and last_letter not in vowels:
-        return word[:len(word) - 2] + 'o' + last_letter
+        return WORD[:len(word) - 2] + 'o' + last_letter
     elif scnd_last_letter in {'i', 'e'} and last_letter not in vowels:
-        return word[:len(word) - 2] + 'a' + last_letter
+        return WORD[:len(word) - 2] + 'a' + last_letter
     elif last_letter not in set(['e', 'i', 'o', 'u', 'y', 'a', 'k', 'x', 'h', 'w', 'd', 'y']):
-        return word + last_letter + 'ed'
+        return WORD + last_letter + 'ed'
     elif last_letter == 'y' and scnd_last_letter not in vowels:
-        return word[:len(word) - 1] + 'ied'
+        return WORD[:len(word) - 1] + 'ied'
     else:
-        return word + 'ed' 
+        return WORD + 'ed' 
     
 
 def plural(word: str):
     '''Returns the plural form of a word (e.g. run --> runs)
-    word does not need to be a noun
+    \n\nword does not need to be a noun
     '''
+    WORD = copy(word)
+    word = word.lower()
+
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
     if in_exeptions(word, 'plural'):
         return grammar_exceptions[word]['plural']
     elif last_letter == 'y' and scnd_last_letter not in vowels:
-        return word[:len(word) - 1] + 'ies'
+        return WORD[:len(word) - 1] + 'ies'
     elif last_letter in {'h', 's'}:
-        return word + 'es'
+        return WORD + 'es'
     else:
-        return word + 's'
+        return WORD + 's'
 
 def nounify(word: str):
     '''Returns the noun version of a verb (e.g. run --> runner)
-    this will only work properly on verbs
+    \n\nthis will only work properly on verbs
     '''
+    WORD = copy(word)
+    word = word.lower()
+    
     last_letter = word[len(word) - 1]
 
     if last_letter == 'e':
-        return word + 'r'
+        return WORD + 'r'
     elif last_letter != 'e' and word[len(word) - 2] not in vowels:
-        return word + 'er'
+        return WORD + 'er'
     else:
-        return word + last_letter + 'er'
+        return WORD + last_letter + 'er'
 
 def add_a(word: str):
     '''Returns a word with the correct form of a in front of it (e.g. run --> a run)'''
-    if word[0] in vowels or word.lower().startswith('herb'):
-        return 'an ' + word
+    WORD = copy(word)
+    word = word.lower()
+
+    if word[0] in vowels or word.startswith('herb'):
+        return 'an ' + WORD
     else:
-        return 'a ' + word
+        return 'a ' + WORD
 
 def pronoun_descriptive(pronoun: str):
     '''Returns pronoun followed by the correct descriptive verb (e.g. he --> he is)
-    will not work with words that are not pronouns
+    \n\nwill not work with words that are not pronouns
     '''
+    PRONOUN = copy(pronoun)
+    pronoun = pronoun.lower()
+
     if pronoun in ['she', 'he']:
-        return pronoun + ' is'
+        return PRONOUN + ' is'
     elif pronoun == 'I':
-        return pronoun + ' am'
+        return PRONOUN + ' am'
     else:
-        return pronoun + ' are'
+        return PRONOUN + ' are'
+
+def pronoun_possessive(pronoun: str):
+    '''Returns the possessive form of a prounoun (e.g. he --> his)'''
+    PRONOUN = copy(pronoun)
+    pronoun = pronoun.lower()
+
+    if pronoun == 'he': pass
