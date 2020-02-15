@@ -14,13 +14,19 @@ grammar_exceptions = {
     'man' : {'plural' : 'men'}
 }
 
-def in_exeptions(word, tense):
+def in_exeptions(word: str, tense: str):
+    '''Checks if the provided word is in grammar_exceptions and if it contains an exception for the provided tense
+    tenses are: 'past', 'plural', and 'present'
+    '''
     if word in grammar_exceptions:
         if tense in grammar_exceptions[word]:
             return True
     return False
 
-def present(word):
+def present(word: str):
+    '''Returns the word in present tense (e.g. run --> running)
+    word does not need to be a noun
+    '''
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
     thrd_last_letter = word[len(word) - 3]
@@ -42,7 +48,10 @@ def present(word):
     return word + 'ing'
     
 
-def past(word):
+def past(word: str):
+    '''Returns the past tense of a word (e.g. run --> ran)
+    word does not need to be a verb
+    '''
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
@@ -64,7 +73,10 @@ def past(word):
         return word + 'ed' 
     
 
-def plural(word):
+def plural(word: str):
+    '''Returns the plural form of a word (e.g. run --> runs)
+    word does not need to be a noun
+    '''
     last_letter = word[len(word) - 1]
     scnd_last_letter = word[len(word) - 2]
 
@@ -77,7 +89,10 @@ def plural(word):
     else:
         return word + 's'
 
-def nounify(word):
+def nounify(word: str):
+    '''Returns the noun version of a verb (e.g. run --> runner)
+    this will only work properly on verbs
+    '''
     last_letter = word[len(word) - 1]
 
     if last_letter == 'e':
@@ -87,13 +102,17 @@ def nounify(word):
     else:
         return word + last_letter + 'er'
 
-def add_a(word):
-    if word[0] in vowels:
+def add_a(word: str):
+    '''Returns a word with the correct form of a in front of it (e.g. run --> a run)'''
+    if word[0] in vowels or word.lower().startswith('herb'):
         return 'an ' + word
     else:
         return 'a ' + word
 
-def pronoun_possesive(pronoun):
+def pronoun_descriptive(pronoun: str):
+    '''Returns pronoun followed by the correct descriptive verb (e.g. he --> he is)
+    will not work with words that are not pronouns
+    '''
     if pronoun in ['she', 'he']:
         return pronoun + ' is'
     elif pronoun == 'I':
