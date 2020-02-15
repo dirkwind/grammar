@@ -27,18 +27,19 @@ def present(word):
 
     if in_exeptions(word, 'present'):
         return grammar_exceptions[word]['present']
+    elif last_letter == 'e' and scnd_last_letter in vowels:
+        pass # pass means that it will return word + 'ing'
     elif last_letter == 'e' and scnd_last_letter != 'e':
         return word[:len(word) - 1] + 'ing'
     elif last_letter == scnd_last_letter:
-        return word + 'ing'
+        pass
     elif thrd_last_letter == scnd_last_letter and last_letter not in vowels:
-        return word + 'ing'
+        pass
     elif thrd_last_letter in vowels and scnd_last_letter in vowels and last_letter not in vowels:
-        return word + 'ing'
+        pass
     elif scnd_last_letter in vowels and last_letter not in vowels and last_letter not in ['w', 'y']:
         return word + last_letter + 'ing'
-    else:
-        return word + 'ing'
+    return word + 'ing'
     
 
 def past(word):
