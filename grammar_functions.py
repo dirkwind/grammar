@@ -118,15 +118,22 @@ def nounify(word: str):
     else:
         return WORD + last_letter + 'er'
 
-def add_a(word: str):
-    '''Returns a word with the correct form of a in front of it (e.g. run --> a run)'''
+def add_a(word: str, cap_a=False):
+    '''Returns a word with the correct form of a in front of it (e.g. run --> a run)
+    \n\ncap_a determines whether or not the 'a' or 'an' is capitalized
+    '''
     WORD = copy(word)
     word = word.lower()
 
     if word[0] in vowels or word.startswith('herb'):
-        return 'an ' + WORD
+        a = 'an'
     else:
-        return 'a ' + WORD
+        a = 'a'
+    
+    if cap_a:
+        a = a.capitalize()
+
+    return a + ' ' + WORD
 
 def pronoun_descriptive(pronoun: str):
     '''Returns pronoun followed by the correct descriptive verb (e.g. he --> he is)
