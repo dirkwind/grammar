@@ -1,5 +1,5 @@
 # grammar
-**THIS IS A WORK-IN-PROGRESS!** This is just a fun project I'm working on to get used to github and its workings. <br>
+**THIS IS A WORK-IN-PROGRESS!** This is just a fun project I'm working on getting used to github and its workings. <br>
 ## What does grammar do?
 Grammar contains a set of grammar function ([here](https://github.com/dirkwind/grammar/blob/master/grammar_functions.py "grammar_functions.py"))
 and some custom encyption functions ([here](https://github.com/dirkwind/grammar/blob/master/crunch.py "crunch.py")).
