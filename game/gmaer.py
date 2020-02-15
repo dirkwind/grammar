@@ -224,7 +224,7 @@ class Gorf(object):
         elif self.seed == 40:
             response = (f"\nIf {add_a(random.choice(nouns))} {plural(random.choice(verbs))}, it is {random.choice(adj)} and {random.choice(adj)}.")
         elif self.seed == 41:
-            response = (f"\nThe {random.choice(adj)} story is that {pronoun_possesive(random.choice(pronouns))} completely and utterly {random.choice(adj)}.")
+            response = (f"\nThe {random.choice(adj)} story is that {pronoun_descriptive(random.choice(pronouns))} completely and utterly {random.choice(adj)}.")
         else:
             response = (f"\nYou have to {random.choice(verbs)}.")
         
