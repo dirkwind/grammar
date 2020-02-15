@@ -196,3 +196,8 @@ def pronoun_possessive(pronoun: str, ignorecase='bool'):
     }
     if pronoun.lower() in pronouns:
         return config_upper(pronoun, pronouns[pronoun.lower()], ignorecase)
+    
+# alternate function names
+pron_desc = pronoun_descriptive
+pron_poss = pronoun_possessive
+ada = add_a
