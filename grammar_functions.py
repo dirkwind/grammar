@@ -144,7 +144,14 @@ def pronoun_descriptive(pronoun: str):
 
 def pronoun_possessive(pronoun: str):
     '''Returns the possessive form of a prounoun (e.g. he --> his)'''
-    PRONOUN = copy(pronoun)
-    pronoun = pronoun.lower()
-
-    if pronoun == 'he': pass
+    pronouns = {
+        'me': 'my',
+        'i': 'my',
+        'he': 'his',
+        'she': 'her',
+        'we': 'our',
+        'you': 'your',
+        'us': 'our'
+    }
+    if pronoun.lower() in pronouns:
+        return pronouns[pronoun.lower()]
