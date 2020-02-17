@@ -16,16 +16,23 @@ keys = {
 
 characters = list('!”’“"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ░▒▓│┤╣║╗╝┐└┴┬├─┼╚╔╩╦╠═╬█▄¦▀■')
 
+def get_charset():
+    result = [char for char in characters]
+    return result 
+
 def generate_key():
-    # generates a key compatible with crunch
-    result = ''
-    charset = characters
+    '''generates a key compatible with crunch'''
+    result = r''
+    charset = get_charset()
     print(len(charset))
     for _ in range(0, len(charset)):
         result = result + str(charset.pop(charset.index(random.choice(charset))))
     return result
 
 def crunch(phrase):
+    '''Encrypts a string or decrypts a uncrunched string\n
+    NOTE: any string that starts with a numeric character will automatically be decrypted rather that encrypted
+    '''
     increment = 1
     result = ''
 
@@ -48,6 +55,9 @@ def crunch(phrase):
     return result
 
 def uncrunch(phrase):
+    '''Encrypts a string or decrypts a uncrunched string\n
+    NOTE: any string that starts with a numeric character will automatically be decrypted rather that encrypted
+    '''
     result = ""
     increment = 1
 
