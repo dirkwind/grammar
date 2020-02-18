@@ -15,7 +15,8 @@ grammar_exceptions = {
     'bite' : {'past' : 'bit'},
     'wear' : {'past' : 'wore'},
     'woman' : {'plural' : 'women'},
-    'man' : {'plural' : 'men'}
+    'man' : {'plural' : 'men'},
+    'come' : {'past' : 'came'}
 }
 
 def in_exeptions(word: str, tense: str):
