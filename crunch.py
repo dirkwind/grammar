@@ -16,15 +16,16 @@ keys = {
 
 characters = list('!”’“"#$%&\'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~¡¢£¤¥¦§¨©ª«¬­®¯°±²³´µ¶·¸¹º»¼½¾¿ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ░▒▓│┤╣║╗╝┐└┴┬├─┼╚╔╩╦╠═╬█▄¦▀■')
 
-def get_charset():
-    result = [char for char in characters]
-    return result 
+def get_charset(alnum=False):
+    '''copies the charaters varible'''
+    if alnum:
+        return [char for char in characters if char.isalnum()]
+    return [char for char in characters] 
 
-def generate_key():
+def generate_key(only_alnum=False):
     '''generates a key compatible with crunch'''
     result = r''
-    charset = get_charset()
-    print(len(charset))
+    charset = get_charset(only_alnum)
     for _ in range(0, len(charset)):
         result = result + str(charset.pop(charset.index(random.choice(charset))))
     return result
